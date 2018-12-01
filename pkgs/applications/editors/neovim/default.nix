@@ -11,13 +11,13 @@ let
 
   neovim = stdenv.mkDerivation rec {
     name = "neovim-unwrapped-${version}";
-    version = "20181114";
+    version = "20181201";
 
     src = fetchFromGitHub {
       owner = "neovim";
       repo = "neovim";
-      rev = "3295083d5aefd469a08ff96a0ddab097235c685e";
-      sha256 = "1caq9q4wgh5kg1zr4k4q55g44rmfv58pcx54kb6q5a4wrmvhq4rn";
+      rev = "feec926633e317577b0a3a63cc0fb352c0ba77b8";
+      sha256 = "0fwghay0z8481a689xb5cqr98dh6g5pbpb6rigm6swji30kdyqzp";
     };
 
     enableParallelBuilding = true;
