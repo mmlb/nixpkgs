@@ -2,7 +2,7 @@
 , meson, ninja
 , pkgconfig, scdoc
 , wayland, libxkbcommon, pcre, json_c, dbus
-, pango, cairo, libinput, libcap, pam, gdk_pixbuf
+, pango, cairo, libevdev, libinput, libcap, pam, gdk_pixbuf
 , wlroots, wayland-protocols
 , buildDocs ? true
 }:
@@ -10,13 +10,13 @@
 stdenv.mkDerivation rec {
   name = "${pname}-${version}";
   pname = "sway";
-  version = "20181201";
+  version = "20181230";
 
   src = fetchFromGitHub {
     owner = "swaywm";
     repo = "sway";
-    rev = "d5678a147fb98116c40659823e2fb677bf3167ce";
-    sha256 = "0aay5hjdajvrdl2p4kmcgs6amhndraws415wa0b86wq3zhgifz58";
+    rev = "69e0982439c096083d29667e8d2e2e25ef77cd61";
+    sha256 = "1520159ic07cnya9phl8h35h7pd2q99phr5k8jdlkvqx4rnz0kj5";
   };
 
   nativeBuildInputs = [
@@ -25,7 +25,7 @@ stdenv.mkDerivation rec {
 
   buildInputs = [
     wayland libxkbcommon pcre json_c dbus
-    pango cairo libinput libcap pam gdk_pixbuf
+    pango cairo libevdev libinput libcap pam gdk_pixbuf
     wlroots wayland-protocols
   ];
 
