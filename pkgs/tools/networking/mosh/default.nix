@@ -1,13 +1,15 @@
-{ lib, stdenv, fetchurl, zlib, protobuf, ncurses, pkgconfig
-, makeWrapper, perlPackages, openssl, autoreconfHook, openssh, bash-completion
+{ lib, stdenv, fetchFromGitHub, zlib, protobuf, ncurses, pkgconfig, IOTty
+, makeWrapper, perl, openssl, autoreconfHook, openssh, bash-completion
 , libutempter ? null, withUtempter ? stdenv.isLinux }:
 
 stdenv.mkDerivation rec {
-  name = "mosh-1.3.2";
+  name = "mosh-20180412";
 
-  src = fetchurl {
-    url = "https://mosh.org/${name}.tar.gz";
-    sha256 = "05hjhlp6lk8yjcy59zywpf0r6s0h0b9zxq0lw66dh9x8vxrhaq6s";
+  src = fetchFromGitHub {
+    owner = "mobile-shell";
+    repo = "mosh";
+    rev = "60859e9d090f530022ffc3e1345975bfdd1b3978";
+    sha256 = "10f0w4c3k6vvyb72h2rjmzd5r3i66yl6sji6550vv471a75a2kz1";
   };
 
   nativeBuildInputs = [ autoreconfHook pkgconfig ];
