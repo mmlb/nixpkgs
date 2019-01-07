@@ -6,15 +6,15 @@
 
 let
   pname = "wlroots";
-  version = "20181230";
+  version = "20190106";
 in stdenv.mkDerivation rec {
   name = "${pname}-${version}";
 
   src = fetchFromGitHub {
     owner = "swaywm";
     repo = "wlroots";
-    rev = "e2c216a4b84803668a10351dc1d5d9d922ae5539";
-    sha256 = "0rvfnpwz18sbwxirslnfbyj6fmp3yqcpw05vsfzzgh4zwjzc7ybs";
+    rev = "e1eceddecff801c7bd7b113704b74df4c6a63ca6";
+    sha256 = "18jfv616p33yivcnfhd5hxp03x4c0dkvrpgcmq35yfr9mi05cm8k";
   };
 
   postPatch = ''

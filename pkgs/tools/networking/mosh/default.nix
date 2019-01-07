@@ -1,5 +1,5 @@
-{ lib, stdenv, fetchFromGitHub, zlib, protobuf, ncurses, pkgconfig, IOTty
-, makeWrapper, perl, openssl, autoreconfHook, openssh, bash-completion
+{ lib, stdenv, fetchFromGitHub, zlib, protobuf, ncurses, pkgconfig
+, makeWrapper, perlPackages, openssl, autoreconfHook, openssh, bash-completion
 , libutempter ? null, withUtempter ? stdenv.isLinux }:
 
 stdenv.mkDerivation rec {
