@@ -43,16 +43,16 @@ let
   ];
 in buildRustPackage rec {
   name = "alacritty-unstable-${version}";
-  version = "20190120";
+  version = "20190123";
 
   src = fetchFromGitHub {
     owner = "jwilm";
     repo = "alacritty";
-    rev = "31271c726e31f90729b5d23dac597edf68cc437a";
-    sha256 = "0cljwc6rhz21jpwdxr4ca0n8wbrlbi5wchj3ws5v4509c30rwzcr";
+    rev = "5e0d74094367e79e1ce2fe35e5996e41d1296807";
+    sha256 = "0g98klrii4dx4g233fmf4lx3676kqwahjjrk560sfbjyibni3j08";
   };
 
-  cargoSha256 = "11n5xl43l07zycdg0icv4i7mh6zy4ia6aw48i0wm59xqdl7xqn9f";
+  cargoSha256 = "11x01vlzi1dd8ckm0aca5bwsd2ahb47c3fypxam4hiskpwyhyq1g";
 
   nativeBuildInputs = [
     cmake
