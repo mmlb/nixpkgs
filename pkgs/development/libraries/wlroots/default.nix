@@ -4,11 +4,9 @@
 , libpng, ffmpeg_4
 }:
 
-let
-  pname = "wlroots";
+stdenv.mkDerivation rec {
+  name = "wlroots-${version}";
   version = "0.5.0";
-in stdenv.mkDerivation rec {
-  name = "${pname}-${version}";
 
   src = fetchFromGitHub {
     owner = "swaywm";
