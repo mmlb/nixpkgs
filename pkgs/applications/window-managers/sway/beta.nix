@@ -31,7 +31,7 @@ stdenv.mkDerivation rec {
 
   enableParallelBuilding = true;
 
-  mesonFlags = "-Dsway-version=${version}";
+  mesonFlags = "-Dman-pages=enabled -Dsway-version=${version}-${src.rev} -Dxwayland=enabled";
 
   meta = with stdenv.lib; {
     description = "i3-compatible window manager for Wayland";
