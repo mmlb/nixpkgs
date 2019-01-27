@@ -42,17 +42,17 @@ let
     libXi
   ];
 in buildRustPackage rec {
-  name = "alacritty-${version}";
-  version = "0.2.6";
+  name = "alacritty-unstable-${version}";
+  version = "20190123" + (builtins.substring 0 8 "${src.rev}");
 
   src = fetchFromGitHub {
     owner = "jwilm";
     repo = "alacritty";
-    rev = "v${version}";
-    sha256 = "1yjmlvxs5vwqhgjlb83a4hq2b12zzhr4pp209djprgdi0cf2bbqw";
+    rev = "5e0d74094367e79e1ce2fe35e5996e41d1296807";
+    sha256 = "0g98klrii4dx4g233fmf4lx3676kqwahjjrk560sfbjyibni3j08";
   };
 
-  cargoSha256 = "11n5xl43l07zycdg0icv4i7mh6zy4ia6aw48i0wm59xqdl7xqn9f";
+  cargoSha256 = "11x01vlzi1dd8ckm0aca5bwsd2ahb47c3fypxam4hiskpwyhyq1g";
 
   nativeBuildInputs = [
     cmake

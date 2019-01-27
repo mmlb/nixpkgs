@@ -6,13 +6,13 @@
 
 stdenv.mkDerivation rec {
   name = "wlroots-${version}";
-  version = "0.2";
+  version = "20190125" + (builtins.substring 0 8 "${src.rev}");
 
   src = fetchFromGitHub {
     owner = "swaywm";
     repo = "wlroots";
-    rev = version;
-    sha256 = "0gfxawjlb736xl90zfv3n6zzf5n1cacgzflqi1zq1wn7wd3j6ppv";
+    rev = "209210d30780ec64995594b77fde3d718b655542";
+    sha256 = "1l8px2w5w8bpwi67ma2mwb4lxamaf51habaf1rc76g8bh3aavn67";
   };
 
   postPatch = ''
