@@ -52,16 +52,16 @@ let
   ];
 in buildRustPackage rec {
   pname = "alacritty";
-  version = "0.4.0";
+  version = "unstable-2019-11-13g${builtins.substring 0 9 src.rev}";
 
   src = fetchFromGitHub {
     owner = "jwilm";
     repo = pname;
-    rev = "v${version}";
-    sha256 = "0adaqdbma6gskb2g14yscrgr9gch5wf2g2clchplv72c2qr1k427";
+    rev = "561063b5606746936ee64d2f25a8b49c05a8d52e";
+    sha256 = "1mkzr2j4lqb7rs40fcvmzcpqzfdn708wkklpbazcxvfzr5iwy1yl";
   };
 
-  cargoSha256 = "1r267g8f986nxh8ms5yhp50qy1yl8gly2jr78p738qqc6frlxlhv";
+  cargoSha256 = "1c4h9nq6j77zcmm2514nlgiyiryya5cdz3yjh2kq81yj8vxbcclm";
 
   nativeBuildInputs = [
     cmake
@@ -114,7 +114,7 @@ in buildRustPackage rec {
     description = "GPU-accelerated terminal emulator";
     homepage = https://github.com/jwilm/alacritty;
     license = with licenses; [ asl20 ];
-    maintainers = with maintainers; [ filalex77 mic92 ];
+    maintainers = with maintainers; [ mic92 ];
     platforms = [ "x86_64-linux" "i686-linux" "x86_64-darwin" "aarch64-linux" ];
   };
 }
