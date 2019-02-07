@@ -50,17 +50,17 @@ let
     wayland
   ];
 in buildRustPackage rec {
-  pname = "alacritty";
-  version = "0.3.2";
+  name = "alacritty-${version}";
+  version = "unstable-2019-05-28g${builtins.substring 0 9 src.rev}";
 
   src = fetchFromGitHub {
     owner = "jwilm";
-    repo = pname;
-    rev = "v${version}";
-    sha256 = "16lhxfpwysd5ngw8yq76vbzjdmfzs9plsvairf768hnl290jcpbh";
+    repo = "alacritty";
+    rev = "dea7a0890a724c50bc5767039f45a2e3d071ee1c";
+    sha256 = "16shwcfdfba5b3hm5cb4sj26kspxbgc3dw5z1dklx847mpcvfyqv";
   };
 
-  cargoSha256 = "02q5kkr0zygpm9i2hd1sr246f18pyia1lq9dwjagqk7d2x3xlc7p";
+  cargoSha256 = "1kdzpiq2341kcfrb3vlzaf17qfkwp8imildqr13h9ls9nbm170nv";
 
   nativeBuildInputs = [
     cmake
@@ -79,11 +79,6 @@ in buildRustPackage rec {
     ];
 
   outputs = [ "out" "terminfo" ];
-
-  postPatch = ''
-    substituteInPlace copypasta/src/x11.rs \
-      --replace Command::new\(\"xclip\"\) Command::new\(\"${xclip}/bin/xclip\"\)
-  '';
 
   postBuild = lib.optionalString stdenv.isDarwin "make app";
 
