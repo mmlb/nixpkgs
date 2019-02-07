@@ -4,7 +4,7 @@
 , libtool
 }:
 
-stdenv.mkDerivation {
+stdenv.mkDerivation rec {
   pname = "libvterm-neovim";
   version = "2019-08-28";
 
