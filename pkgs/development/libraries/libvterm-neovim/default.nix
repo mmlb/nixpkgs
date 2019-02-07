@@ -4,15 +4,15 @@
 , libtool
 }:
 
-stdenv.mkDerivation {
+stdenv.mkDerivation rec {
   pname = "libvterm-neovim";
-  version = "2018-11-26";
+  version = "unstable-2019-08-28g${builtins.substring 0 9 src.rev}";
 
   src = fetchFromGitHub {
     owner = "neovim";
     repo = "libvterm";
-    rev = "f600f523545b7d4018ebf320e3273795dbe43c8a";
-    sha256 = "08lxd8xs9cg4axgq6bkb7afjxg3s29s1a3niqqm4wjb7iyi2jx5b";
+    rev = "4a5fa43e0dbc0db4fe67d40d788d60852864df9e";
+    sha256 = "0hkzqng3zs8hz327wdlhzshcg0qr31fhsbi9mvifkyly6c3y78cx";
   };
 
   buildInputs = [ perl ];
