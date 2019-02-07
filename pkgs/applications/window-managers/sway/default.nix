@@ -1,4 +1,4 @@
-{ stdenv, fetchFromGitHub,
+{ stdenv, fetchFromGitHub, makeWrapper
 , meson, ninja
 , pkgconfig, scdoc
 , wayland, libxkbcommon, pcre, json_c, dbus, libevdev
@@ -8,16 +8,16 @@
 
 stdenv.mkDerivation rec {
   pname = "sway";
-  version = "1.2";
+  version = "unstable-2019-08-27g${builtins.substring 0 9 src.rev}";
 
   src = fetchFromGitHub {
     owner = "swaywm";
     repo = "sway";
-    rev = version;
-    sha256 = "0vch2zm5afc76ia78p3vg71zr2fyda67l9hd2h0x1jq3mnvfbxnd";
+    rev = "1a8b9fda8a81d71ec9de65fd4c3f1df40e03f971";
+    sha256 = "112hjbn1v46zwb2ycm1225gps7wgb60ql4gaza2b2ywxd2y49mfg";
   };
 
-  nativeBuildInputs = [ pkgconfig meson ninja scdoc ];
+  nativeBuildInputs = [ pkgconfig meson ninja scdoc makeWrapper ];
 
   buildInputs = [
     wayland libxkbcommon pcre json_c dbus libevdev
@@ -36,6 +36,10 @@ stdenv.mkDerivation rec {
   postInstall = ''
     wrapProgram $out/bin/sway --prefix PATH : "${swaybg}/bin"
   '';
+
+  #postPatch = ''
+  #  sed -i "s/version: '1.0'/version: '${version}'/" meson.build
+  #'';
 
   meta = with stdenv.lib; {
     description = "i3-compatible tiling Wayland compositor";

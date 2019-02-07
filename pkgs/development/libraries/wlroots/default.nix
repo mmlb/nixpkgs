@@ -6,12 +6,12 @@
 
 stdenv.mkDerivation rec {
   pname = "wlroots";
-  version = "0.7.0";
+  version = "unstable-2019-08-26g${builtins.substring 0 9 src.rev}";
 
   src = fetchFromGitHub {
     owner = "swaywm";
     repo = "wlroots";
-    rev = version;
+    rev = "a20bb38763877410a80a0c02ddfbfaa906c288fd";
     sha256 = "0jzxa6psbc7ddxli7rbfqxmv1svxnis51l1vch4hb9fdixqm284a";
   };
 
@@ -30,6 +30,11 @@ stdenv.mkDerivation rec {
     "-Dlibcap=enabled" "-Dlogind=enabled" "-Dxwayland=enabled" "-Dx11-backend=enabled"
     "-Dxcb-icccm=enabled" "-Dxcb-errors=enabled"
   ];
+
+  postPatch = ''
+    # It happens from time to time that the version wasn't updated:
+    sed -iE "s/version: '\([0-9]\.[0-9]\.[0-9]\)'/version: '\1-${version}'/" meson.build
+  '';
 
   postInstall = ''
     # Copy the library to $examples

@@ -50,17 +50,17 @@ let
     wayland
   ];
 in buildRustPackage rec {
-  pname = "alacritty";
-  version = "0.3.3";
+  name = "alacritty-${version}";
+  version = "unstable-2019-08-25g${builtins.substring 0 9 src.rev}";
 
   src = fetchFromGitHub {
     owner = "jwilm";
-    repo = pname;
-    rev = "v${version}";
-    sha256 = "1h9zid7bi19qga3a8a2d4x3ma9wf1njmj74s4xnw7nzqqf3dh750";
+    repo = "alacritty";
+    rev = "06e52a62660a0604498d8c11bdc621ac9c218606";
+    sha256 = "1kxvi7gdm427x4jn7qj5zbl6mna114fskd4alcq5wx7j0fphk3r9";
   };
 
-  cargoSha256 = "1rxb5ljgvn881jkxm8772kf815mmp08ci7sqmn2x1jwdcrphhxr1";
+  cargoSha256 = "057id473q7wh7fva84q84a1gd66vvx6mlnn1gjhvx1wxvdjkggsg";
 
   nativeBuildInputs = [
     cmake
