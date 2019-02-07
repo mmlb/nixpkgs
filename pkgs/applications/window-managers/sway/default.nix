@@ -9,13 +9,13 @@
 stdenv.mkDerivation rec {
   name = "${pname}-${version}";
   pname = "sway";
-  version = "1.0";
+  version = "20190430g${builtins.substring 0 9 src.rev}";
 
   src = fetchFromGitHub {
     owner = "swaywm";
     repo = "sway";
-    rev = version;
-    sha256 = "09cndc2nl39d3l7g5634xp0pxcz60pvc5277mfw89r22mh0j78rx";
+    rev = "c1186182785d15eb205bac4b49d0888e1a6601ee";
+    sha256 = "1srdpaknx5dsf0x66fbxxa5625fnaj06ykcrh2p1zrcaz0992jcg";
   };
 
   # no need for pr3862 patches
