@@ -52,14 +52,14 @@ let
     wayland
   ];
 in buildRustPackage rec {
-  pname = "alacritty";
-  version = "0.3.3";
+  name = "alacritty-${version}";
+  version = "unstable-2019-06-23g${builtins.substring 0 9 src.rev}";
 
   src = fetchFromGitHub {
     owner = "jwilm";
-    repo = pname;
-    rev = "v${version}";
-    sha256 = "1h9zid7bi19qga3a8a2d4x3ma9wf1njmj74s4xnw7nzqqf3dh750";
+    repo = "alacritty";
+    rev = "743d5d9c6614a807ab398473e62fad280845519e";
+    sha256 = "1494fiql6k9s71rf3qbl4amwdz2yyll4rr5303jmyl9f9p3ryh2l";
   };
 
   cargoSha256 = "1rxb5ljgvn881jkxm8772kf815mmp08ci7sqmn2x1jwdcrphhxr1";
