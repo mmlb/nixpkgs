@@ -1,4 +1,4 @@
-{ stdenv, fetchFromGitHub,
+{ stdenv, fetchFromGitHub, makeWrapper
 , meson, ninja
 , pkgconfig, scdoc
 , wayland, libxkbcommon, pcre, json_c, dbus, libevdev
@@ -8,16 +8,16 @@
 
 stdenv.mkDerivation rec {
   pname = "sway";
-  version = "1.1.1";
+  version = "unstable-2019-06-28g${builtins.substring 0 9 src.rev}";
 
   src = fetchFromGitHub {
     owner = "swaywm";
     repo = "sway";
-    rev = version;
-    sha256 = "0yhn9zdg9mzfhn97c440lk3pw6122nrhx0is5sqmvgr6p814f776";
+    rev = "f5d1c27226a74a234664af9b35ab226a67386e8e";
+    sha256 = "0njxhjbwmhjzf7yzm75q5xicqaqhhbdp7lnvp5y19mk3r801lzbn";
   };
 
-  nativeBuildInputs = [ pkgconfig meson ninja scdoc ];
+  nativeBuildInputs = [ pkgconfig meson ninja scdoc makeWrapper ];
 
   buildInputs = [
     wayland libxkbcommon pcre json_c dbus libevdev
