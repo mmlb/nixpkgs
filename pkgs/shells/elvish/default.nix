@@ -2,7 +2,7 @@
 
 buildGoPackage rec {
   pname = "elvish";
-  version = "0.12";
+  version = "20190501g${builtins.substring 0 9 src.rev}";
 
   goPackagePath = "github.com/elves/elvish";
   excludedPackages = [ "website" ];
@@ -14,8 +14,8 @@ buildGoPackage rec {
   src = fetchFromGitHub {
     owner = "elves";
     repo = "elvish";
-    rev = "v${version}";
-    sha256 = "1vvbgkpnrnb5aaak4ks45wl0cyp0vbry8bpxl6v2dpmq9x0bscpp";
+    rev = "0c4691ae94aa93bb53507d57b513c7e6eff7166f";
+    sha256 = "00mxqp803nkgv9n220g0yjr31qwf5azaxgclrk0gr0j1nlipld3d";
   };
 
   meta = with stdenv.lib; {
