@@ -47,17 +47,17 @@ let
     libxkbcommon
   ];
 in buildRustPackage rec {
-  pname = "alacritty";
-  version = "0.3.0";
+  name = "alacritty-${version}";
+  version = "20190414"+ (builtins.substring 0 9 "g${src.rev}");
 
   src = fetchFromGitHub {
     owner = "jwilm";
-    repo = pname;
-    rev = "v${version}";
-    sha256 = "0d9qnymi8v4aqm2p300ccdsgavrnd64sv7v0cz5dp0sp5c0vd7jl";
+    repo = "alacritty";
+    rev = "5174f9b27488902e7862aeb470aa0f0375c95e46";
+    sha256 = "1kaw4g4999s9w1yg3rarl5w1lri09n6ax6ifr8f2y7kax063kx0x";
   };
 
-  cargoSha256 = "11gpv0h15n12f97mcwjymlzcmkldbakkkb5h931qgm3mvhhq5ay5";
+  cargoSha256 = "0qb9csdgqpkk1q1cxladqsbafma5588kna9xrnss3jik2iqk6gxi";
 
   nativeBuildInputs = [
     cmake

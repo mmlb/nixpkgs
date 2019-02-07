@@ -14,7 +14,7 @@ libgit2_0_27.overrideDerivation (old: {
   src = fetchFromGitHub {
     owner = "romkatv";
     repo = "libgit2";
-    rev = "7d63d8cbd815e594c56e29c33518f2b9e9d9a919";
-    sha256 = "1n3dcm4l2vbc6fmxqs95c3hc68k48kzsydg7w3q5s3x71sljbmz9";
+    rev = "a4d11f3a82b1ef3bd0a0a3750f773fd08f60a77e";
+    sha256 = "1n7wff9drdpphyhmjs3fgx4xfxj2klb361m94v9rqbiyy3m9wxk3";
   };
 })

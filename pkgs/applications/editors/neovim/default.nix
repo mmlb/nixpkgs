@@ -20,13 +20,13 @@ let
 in
   stdenv.mkDerivation rec {
     name = "neovim-unwrapped-${version}";
-    version = "0.3.4";
+    version = "20190415"+ (builtins.substring 0 9 "g${src.rev}");
 
     src = fetchFromGitHub {
       owner = "neovim";
       repo = "neovim";
-      rev = "v${version}";
-      sha256 = "07ncvgp6xfhiwc6hd7qf7zk28n3yj47p26qj1ji29vqkwnk28y3s";
+      rev = "987619ddd73e792dc04b1a408b92cef2abb52bef";
+      sha256 = "0swzrnhlxpd6ncmia65rv4m5lvb61m2cmsd17nw7j3lr25cqj4iw";
     };
 
     patches = [
