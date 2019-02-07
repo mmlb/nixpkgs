@@ -8,13 +8,13 @@
 
 stdenv.mkDerivation rec {
   pname = "sway";
-  version = "unstable-2020-01-22g${builtins.substring 0 9 src.rev}";
+  version = "unstable-2020-05-20g${builtins.substring 0 9 src.rev}";
 
   src = fetchFromGitHub {
     owner = "swaywm";
     repo = pname;
-    rev = "f681d529397bd6b5ab3850008857d423415999c1";
-    sha256 = "11qf89y3q92g696a6f4d23qb44gqixg6qxq740vwv2jw59ms34ja";
+    rev = "45e4e9217238fe658b99634d284768439969ad79";
+    sha256 = "1h7kcbrl86gpj6c5cs64jzw6kygrxxshkgljv1ivga0k6k6j8zqi";
   };
 
   patches = [
@@ -34,10 +34,6 @@ stdenv.mkDerivation rec {
 
   enableParallelBuilding = true;
 
-  mesonFlags = [
-    "-Ddefault-wallpaper=false" "-Dxwayland=enabled" "-Dgdk-pixbuf=enabled"
-    "-Dtray=enabled" "-Dman-pages=enabled"
-  ];
 
   postPatch = ''
     sed -i "/^project(/,/^)/ s/\\bversion: '\([0-9]\.[0-9]\)'/version: '\1-${version}'/" meson.build
