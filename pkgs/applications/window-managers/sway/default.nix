@@ -7,13 +7,13 @@
 
 stdenv.mkDerivation rec {
   pname = "sway";
-  version = "unstable-2020-0--15${builtins.substring 0 9 src.rev}";
+  version = "unstable-2020-06-19g${builtins.substring 0 9 src.rev}";
 
   src = fetchFromGitHub {
     owner = "swaywm";
     repo = pname;
-    rev = "108b8e97b77acba6206cdc69e419531d17380c7a";
-    sha256 = "0r3b7h778l9i20z3him9i2qsaynpn9y78hzfgv3cqi8fyry2c4f9";
+    rev = "eeb90a7963cf2a846b6c9ce32f4796ac28a8629f";
+    sha256 = "0fral2anf86k6n7qcf2whm94wiz34f6xfidva51dyhrpizcyfm4q";
   };
 
   patches = [
@@ -38,6 +38,8 @@ stdenv.mkDerivation rec {
   mesonFlags = [
     "-Ddefault-wallpaper=false"
   ];
+
+  enableParallelBuilding = true;
 
   meta = with stdenv.lib; {
     description = "An i3-compatible tiling Wayland compositor";

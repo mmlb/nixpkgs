@@ -2,8 +2,9 @@
 
 buildGoModule rec {
   pname = "elvish";
-  version = "unstable-2020-07-05g${builtins.substring 0 9 src.rev}";
+  version = "unstable-2020-06-14g${builtins.substring 0 9 src.rev}";
 
+  goPackagePath = "github.com/elves/elvish";
   excludedPackages = [ "website" ];
 
   buildFlagsArray = [ "-ldflags=-s -w -X github.com/elves/elvish/pkg/buildinfo.Version==${version} -X github.com/elves/elvish/pkg/buildinfo.Reproducible=true" ];
@@ -11,8 +12,8 @@ buildGoModule rec {
   src = fetchFromGitHub {
     owner = "elves";
     repo = pname;
-    rev = "617d657896ac832fbb5eba7261cb95478a890092";
-    sha256 = "1jsxhnm82pjzwvcjq7vrlldyjnv5j6c83a13dj6zphlqq99z68l4";
+    rev = "b5ba97726609cff8f3f952c0418a262d0399af1b";
+    sha256 = "1p74pv59gwz94lsraibnmv1nj6fvqv12rkqaqwdpz83qpxjrhv4b";
   };
 
   vendorSha256 = "1f971n17h9bc0qcgs9ipiaw0x9807mz761fqm605br4ch1kp0897";
