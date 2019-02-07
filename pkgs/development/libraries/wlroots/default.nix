@@ -6,13 +6,13 @@
 
 stdenv.mkDerivation rec {
   pname = "wlroots";
-  version = "unstable-2019-10-07g${builtins.substring 0 9 src.rev}";
+  version = "unstable-2019-12-23g${builtins.substring 0 9 src.rev}";
 
   src = fetchFromGitHub {
     owner = "swaywm";
     repo = pname;
-    rev = "b051bb68c23d8e552775494c86e5b5ad12bc7bf6";
-    sha256 = "1ak86kx617c81dy85wg9rldy1z3n8ch93cjc05a4j6sifv0nkyfm";
+    rev = "18775fda0f7a3c1d73b78a4f9bf8b4c37a304597";
+    sha256 = "026mprmg67j7gnc8a9cxkqnjsm42lmsjxv8lxgmc18yga8dfgsqp";
   };
 
   # $out for the library and $examples for the example programs (in examples):
