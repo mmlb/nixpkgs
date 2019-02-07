@@ -19,12 +19,12 @@ let
     ));
 in
   stdenv.mkDerivation rec {
-    pname = "neovim-unwrapped";
+    pname = "neovim";
     version = "0.4.3";
 
     src = fetchFromGitHub {
       owner = "neovim";
-      repo = "neovim";
+      repo = pname;
       rev = "v${version}";
       sha256 = "03p7pic7hw9yxxv7fbgls1f42apx3lik2k6mpaz1a109ngyc5kaj";
     };
