@@ -2,7 +2,7 @@
 
 buildGoModule rec {
   pname = "elvish";
-  version = "unstable-2018-07-08g${builtins.substring 0 9 src.rev}";
+  version = "unstable-2020-04-19g${builtins.substring 0 9 src.rev}";
 
   buildFlagsArray = ''
     -ldflags=-X github.com/elves/elvish/buildinfo.Version=${version}
@@ -11,10 +11,10 @@ buildGoModule rec {
   src = fetchFromGitHub {
     owner = "elves";
     repo = pname;
-    rev = "99687f337442f07c0dd6959103b34c450300dce7";
-    sha256 = "1vvbgkpnrnb5aaak4ks45wl0cyp0vbry8bpxl6v2dpmq9x0bscpp";
+    rev = "6938c8d11701555548cf19208087361f9397ad4a";
+    sha256 = "0q8wcx3imscik4qn9kmd37lwr9jm6kcf1ajhxsxgkxdwkjj3v4xb";
   };
-  modSha256 = "13x4wbfj8049ygm3zbgzyr2bm4sq4x6xddrxx6shr8fydlcf1g8v";
+  modSha256 = "1jl43p9jf5kwv9rg3srmwp9ss4q9qdqj5f02q4zsmalkyan4zbz1";
 
   meta = with stdenv.lib; {
     description = "A friendly and expressive command shell";

@@ -8,13 +8,13 @@
 
 stdenv.mkDerivation rec {
   pname = "sway";
-  version = "unstable-2019-08-27g${builtins.substring 0 9 src.rev}";
+  version = "unstable-2020-04-20g${builtins.substring 0 9 src.rev}";
 
   src = fetchFromGitHub {
     owner = "swaywm";
     repo = pname;
-    rev = "be138dab4419d3e76a7742428d9ec85bce06116b";
-    sha256 = "0vch2zm5afc76ia78p3vg71zr2fyda67l9hd2h0x1jq3mnvfbxnd";
+    rev = "58eb0c408277af0013fb582803599ea811da3e88";
+    sha256 = "0bv6k05d5d02ynbzvgylyvxblswpgyiifcbm0kr3xm520wwcz75m";
   };
 
   patches = [
@@ -35,8 +35,12 @@ stdenv.mkDerivation rec {
   enableParallelBuilding = true;
 
   mesonFlags = [
-    "-Ddefault-wallpaper=false" "-Dxwayland=enabled" "-Dgdk-pixbuf=enabled"
-    "-Dtray=enabled" "-Dman-pages=enabled"
+    "-Ddefault-wallpaper=false"
+    "-Dgdk-pixbuf=enabled"
+    "-Dlogind-provider=systemd"
+    "-Dman-pages=enabled"
+    "-Dtray=enabled"
+    "-Dxwayland=enabled"
   ];
 
   postPatch = ''

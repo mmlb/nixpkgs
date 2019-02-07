@@ -6,13 +6,13 @@
 
 stdenv.mkDerivation rec {
   pname = "wlroots";
-  version = "unstable-2019-10-07g${builtins.substring 0 9 src.rev}";
+  version = "unstable-2020-04-17g${builtins.substring 0 9 src.rev}";
 
   src = fetchFromGitHub {
     owner = "swaywm";
     repo = pname;
-    rev = "b051bb68c23d8e552775494c86e5b5ad12bc7bf6";
-    sha256 = "1ak86kx617c81dy85wg9rldy1z3n8ch93cjc05a4j6sifv0nkyfm";
+    rev = "85e299e6c55e5478617cb167eea316cfe7ee430c";
+    sha256 = "13yhq96lglx16j8v11dfr43779ibn9z6f673w7jkq9lm06cp91qj";
   };
 
   # $out for the library and $examples for the example programs (in examples):
@@ -48,6 +48,10 @@ stdenv.mkDerivation rec {
       cp "$binary" "$examples/bin/wlroots-$binary"
     done
   '';
+
+  mesonFlags = [
+    "-Dlogind-provider=systemd"
+  ];
 
   meta = with stdenv.lib; {
     description = "A modular Wayland compositor library";
