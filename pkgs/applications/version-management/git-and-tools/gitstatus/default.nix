@@ -39,7 +39,7 @@ stdenv.mkDerivation rec {
     sed -i "s|local daemon.*|local daemon=$out/bin/gitstatusd|" $out/gitstatus.plugin.zsh
   '';
 
-  meta = with lib; {
+  meta = with stdenv.lib; {
     description = "eradicate removes commented-out code from Python files.";
     homepage = https://github.com/myint/eradicate;
     license = [ licenses.gpl3 ];
