@@ -2,7 +2,6 @@
 , libuv, lua, ncurses, pkgconfig
 , unibilium, xsel, gperf
 , libvterm-neovim
-, withJemalloc ? true, jemalloc
 , glibcLocales ? null, procps ? null
 
 # now defaults to false because some tests can be flaky (clipboard etc)
@@ -49,8 +48,7 @@ in
       unibilium
       gperf
       neovimLuaEnv
-    ] ++ optional withJemalloc jemalloc
-      ++ optional stdenv.isDarwin libiconv
+    ] ++ optional stdenv.isDarwin libiconv
       ++ optionals doCheck [ glibcLocales procps ]
     ;
 
@@ -88,16 +86,11 @@ in
     hardeningDisable = [ "fortify" ];
 
     preConfigure = stdenv.lib.optionalString stdenv.isDarwin ''
-      export DYLD_LIBRARY_PATH=${jemalloc}/lib
       substituteInPlace src/nvim/CMakeLists.txt --replace "    util" ""
     '';
 
     postInstall = stdenv.lib.optionalString stdenv.isLinux ''
       sed -i -e "s|'xsel|'${xsel}/bin/xsel|g" $out/share/nvim/runtime/autoload/provider/clipboard.vim
-    '' + stdenv.lib.optionalString (withJemalloc && stdenv.isDarwin) ''
-      install_name_tool -change libjemalloc.1.dylib \
-                ${jemalloc}/lib/libjemalloc.1.dylib \
-                $out/bin/nvim
     '';
 
     # export PATH=$PWD/build/bin:${PATH}
