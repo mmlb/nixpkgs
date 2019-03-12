@@ -1,4 +1,4 @@
-{ stdenv, fetchFromGitHub, makeWrapper
+{ stdenv, fetchFromGitHub,
 , meson, ninja
 , pkgconfig, scdoc
 , wayland, libxkbcommon, pcre, json_c, dbus, libevdev
@@ -17,12 +17,7 @@ stdenv.mkDerivation rec {
     sha256 = "0yhn9zdg9mzfhn97c440lk3pw6122nrhx0is5sqmvgr6p814f776";
   };
 
-  patches = [
-    ./sway-config-no-nix-store-references.patch
-    ./load-configuration-from-etc.patch
-  ];
-
-  nativeBuildInputs = [ pkgconfig meson ninja scdoc makeWrapper ];
+  nativeBuildInputs = [ pkgconfig meson ninja scdoc ];
 
   buildInputs = [
     wayland libxkbcommon pcre json_c dbus libevdev
@@ -35,6 +30,7 @@ stdenv.mkDerivation rec {
   mesonFlags = [
     "-Ddefault-wallpaper=false" "-Dxwayland=enabled" "-Dgdk-pixbuf=enabled"
     "-Dtray=enabled" "-Dman-pages=enabled"
+    "-DSWAY_VERSION=${version}"
   ];
 
   postInstall = ''
