@@ -22,7 +22,7 @@ stdenv.mkDerivation rec {
   ];
 
   postPatch = ''
-    substituteInPlace meson.build --replace "v1.5" "1.5"
+    substituteInPlace meson.build --replace "1.5" "1.5-${version}"
   '';
 
   nativeBuildInputs = [
