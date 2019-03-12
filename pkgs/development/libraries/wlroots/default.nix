@@ -34,7 +34,7 @@ stdenv.mkDerivation rec {
 
   postPatch = ''
     # It happens from time to time that the version wasn't updated:
-    sed -iE "s/version: '[0-9]\.[0-9]\.[0-9]'/version: '${version}.0'/" meson.build
+    sed -iE "s/version: '\([0-9]\.[0-9]\.[0-9]\)'/version: '\1-${version}'/" meson.build
   '';
 
   postInstall = ''
