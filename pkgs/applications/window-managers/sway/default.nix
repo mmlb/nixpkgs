@@ -17,11 +17,6 @@ stdenv.mkDerivation rec {
     sha256 = "0vch2zm5afc76ia78p3vg71zr2fyda67l9hd2h0x1jq3mnvfbxnd";
   };
 
-  patches = [
-    ./sway-config-no-nix-store-references.patch
-    ./load-configuration-from-etc.patch
-  ];
-
   nativeBuildInputs = [ pkgconfig meson ninja scdoc makeWrapper ];
 
   buildInputs = [
@@ -39,6 +34,10 @@ stdenv.mkDerivation rec {
 
   postInstall = ''
     wrapProgram $out/bin/sway --prefix PATH : "${swaybg}/bin"
+  '';
+
+  postPatch = ''
+    sed -i "/^project(/,/^)/ s/\\bversion: '\([0-9]\.[0-9]\)'/version: '\1-${version}'/" meson.build
   '';
 
   meta = with stdenv.lib; {
