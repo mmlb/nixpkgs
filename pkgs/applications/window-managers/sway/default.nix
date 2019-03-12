@@ -18,17 +18,7 @@ stdenv.mkDerivation rec {
     sha256 = "09cndc2nl39d3l7g5634xp0pxcz60pvc5277mfw89r22mh0j78rx";
   };
 
-  patches = [
-    # Fix for a compiler warning that causes a build failure
-    # (see https://github.com/swaywm/sway/issues/3862):
-    (fetchpatch {
-      url = "https://github.com/swaywm/sway/commit/bcde298a719f60b9913133dbd2a169dedbc8dd7d.patch";
-      sha256 = "0r583nmqvq43ib93yv6flw8pj833v32lbs0q0xld56s3rnzvvdcp";
-    })
-    ./sway-config-no-nix-store-references.patch
-    ./load-configuration-from-etc.patch
-  ];
-
+  # no need for pr3862 patches
   nativeBuildInputs = [ pkgconfig meson ninja scdoc ];
 
   buildInputs = [
@@ -42,6 +32,7 @@ stdenv.mkDerivation rec {
   mesonFlags = [
     "-Ddefault-wallpaper=false" "-Dxwayland=enabled" "-Dgdk-pixbuf=enabled"
     "-Dtray=enabled" "-Dman-pages=enabled"
+    "-DSWAY_VERSION=${version}"
   ];
 
   meta = with stdenv.lib; {
