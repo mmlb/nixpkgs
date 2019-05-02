@@ -3,22 +3,24 @@
   fetchFromGitHub,
   rustPlatform,
   cmake,
-  makeWrapper,
-  ncurses,
   expat,
-  pkgconfig,
-  freetype,
   fontconfig,
-  libX11,
+  freetype,
   gzip,
+  libGL,
+  libX11,
   libXcursor,
-  libXxf86vm,
   libXi,
   libXrandr,
-  libGL,
-  xclip,
-  wayland,
+  libXxf86vm,
   libxkbcommon,
+  libxcb,
+  makeWrapper,
+  ncurses,
+  pkgconfig,
+  python3,
+  wayland,
+  xclip,
   # Darwin Frameworks
   cf-private,
   AppKit,
@@ -43,8 +45,9 @@ let
     libGL
     libXi
   ] ++ lib.optionals stdenv.isLinux [
-    wayland
     libxkbcommon
+    libxcb
+    wayland
   ];
 in buildRustPackage rec {
   pname = "alacritty";
@@ -61,10 +64,11 @@ in buildRustPackage rec {
 
   nativeBuildInputs = [
     cmake
-    makeWrapper
-    pkgconfig
-    ncurses
     gzip
+    makeWrapper
+    ncurses
+    pkgconfig
+    python3
   ];
 
   buildInputs = rpathLibs
