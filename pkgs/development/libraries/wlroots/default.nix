@@ -6,13 +6,13 @@
 
 stdenv.mkDerivation rec {
   name = "wlroots-${version}";
-  version = "unstable-2019-06-22g${builtins.substring 0 9 src.rev}";
+  version = "unstable-2019-06-27g${builtins.substring 0 9 src.rev}";
 
   src = fetchFromGitHub {
     owner = "swaywm";
     repo = "wlroots";
-    rev = "b3f42548d068996995490585e27e16c191b4a64c";
-    sha256 = "0xzz1z69jigjnwgz6q8g2lrns001c3fn04jnyy8zpcvkdgcmzkka";
+    rev = "fb739b829305a60f99abb6b847b45aeb9c6cbf77";
+    sha256 = "0lcm0x6a9hcfx33q4fm0rwn6zbpq8d9032rb10lds92ls7n5vs04";
   };
 
   # $out for the library, $bin for rootston, and $examples for the example
