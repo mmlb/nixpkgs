@@ -4,13 +4,13 @@
 
 stdenv.mkDerivation rec {
   name = "mosh-${version}";
-  version = "unstable-2019-06-13g${builtins.substring 0 9 src.rev}";
+  version = "unstable-2019-07-10g${builtins.substring 0 9 src.rev}";
 
   src = fetchFromGitHub {
     owner = "mobile-shell";
     repo = "mosh";
-    rev = "335e3869b7af59314255a121ec7ed0f6309b06e7";
-    sha256 = "0h42grx0sdxix9x9ph800szddwmbxxy7nnzmfnpldkm6ar6i6ws2";
+    rev = "b1da7005358b4a550e31faa646cf1cf116700412";
+    sha256 = "113md2x97vlijd78wkjh1498xmsp7awn5nk34gwg7z9b7d5pm5qf";
   };
 
   nativeBuildInputs = [ autoreconfHook pkgconfig ];
