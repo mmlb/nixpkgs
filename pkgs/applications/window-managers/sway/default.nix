@@ -8,13 +8,13 @@
 
 stdenv.mkDerivation rec {
   pname = "sway";
-  version = "unstable-2019-07-05g${builtins.substring 0 9 src.rev}";
+  version = "unstable-2019-07-18g${builtins.substring 0 9 src.rev}";
 
   src = fetchFromGitHub {
     owner = "swaywm";
     repo = "sway";
-    rev = "c9cb5ced7f7597afeb73fd5b661a98462f170d11";
-    sha256 = "068daw2lxczqp2kzw0mqvlaj80yhyrjfg8h2fgqvxy3vby4r0hfl";
+    rev = "36aa67e549609ce6c786c382f14ab866536cac47";
+    sha256 = "0k220ni52z5jgj2n9jh68xal0ph6l0hxxgvzr23bbdrh8rcmb02f";
   };
 
   nativeBuildInputs = [ pkgconfig meson ninja scdoc makeWrapper ];
