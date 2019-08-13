@@ -12,9 +12,9 @@ with stdenv.lib;
 
 let
   neovimLuaEnv = lua.withPackages(ps:
-    (with ps; [ mpack lpeg luabitop ]
+    (with ps; [ compat53 lpeg luabitop luv luv-dev mpack ]
     ++ optionals doCheck [
-        nvim-client luv coxpcall busted luafilesystem penlight inspect
+        nvim-client coxpcall busted luafilesystem penlight inspect
       ]
     ));
 in
@@ -75,8 +75,10 @@ in
     disallowedReferences = [ stdenv.cc ];
 
     cmakeFlags = [
-      "-DLUA_PRG=${neovimLuaEnv.interpreter}"
       "-DGPERF_PRG=${gperf}/bin/gperf"
+      "-DLUA_PRG=${neovimLuaEnv.interpreter}"
+      "-DLIBLUV_LIBRARY=${lua.pkgs.luv-dev}/lib/lua/${lua.luaversion}/libluv.a"
+      "-DLIBLUV_INCLUDE_DIR=${lua.pkgs.luv-dev}/include"
     ]
     ++ optional doCheck "-DBUSTED_PRG=${neovimLuaEnv}/bin/busted"
     ++ optional (!lua.pkgs.isLuaJIT) "-DPREFER_LUA=ON"

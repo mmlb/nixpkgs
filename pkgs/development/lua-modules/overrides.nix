@@ -239,6 +239,9 @@ with super;
   });
 
   luv = super.luv.override({
+    propagatedBuildInputs = [
+      pkgs.libuv
+    ];
     # Use system libuv instead of building local and statically linking
     # This is a hacky way to specify -DWITH_SHARED_LIBUV=ON which
     # is not possible with luarocks and the current luv rockspec
@@ -248,9 +251,20 @@ with super;
      sed -i 's,\(option(WITH_SHARED_LIBUV.*\)OFF,\1ON,' CMakeLists.txt
      rm -rf deps/libuv
     '';
+  });
+  luv-dev = super.luv.override({
     propagatedBuildInputs = [
       pkgs.libuv
     ];
+    preBuild = ''
+     sed -i '/option(WITH_SHARED_LIBUV/ s|OFF|ON|' CMakeLists.txt
+     sed -i '/option(BUILD_MODULE/ s|ON|OFF|' CMakeLists.txt
+     sed -i 's,$''+''{INSTALL_INC_DIR},${placeholder "out"}/include/luv,' CMakeLists.txt
+     rm -rf deps/libuv
+    '';
+    postInstall = ''
+      rm -rf $out/luv-*-rocks
+    '';
   });
 
   rapidjson = super.rapidjson.override({
