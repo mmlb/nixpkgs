@@ -6,13 +6,13 @@
 
 stdenv.mkDerivation rec {
   name = "wlroots-${version}";
-  version = "unstable-2019-07-17g${builtins.substring 0 9 src.rev}";
+  version = "unstable-2019-08-12g${builtins.substring 0 9 src.rev}";
 
   src = fetchFromGitHub {
     owner = "swaywm";
     repo = "wlroots";
-    rev = "bb056174146ae01448e0281ea204d2ddd60ebe3c";
-    sha256 = "1cfsrp2yarpqs101n0fg0vwml60gf9zp62xpsz9r8pjbpyip5snf";
+    rev = "540e23d1029acf621c8da992aa56a4d7f98abe3a";
+    sha256 = "1bihpswk6fka36pj07zjli2qws0qd5vqq0d2r1ch1r2gb2klif84";
   };
 
   # $out for the library, $bin for rootston, and $examples for the example
@@ -45,31 +45,6 @@ stdenv.mkDerivation rec {
     done
   '';
 
-  postFixup = ''
-    # Install rootston (the reference compositor) to $bin and $examples (this
-    # has to be done after the fixup phase to prevent broken binaries):
-    for output in "$bin" "$examples"; do
-      mkdir -p $output/bin
-      cp rootston/rootston $output/bin/
-      patchelf \
-        --set-rpath "$(patchelf --print-rpath $output/bin/rootston | sed s,$out,$output,g)" \
-        $output/bin/rootston
-      mkdir $output/etc
-      cp ../rootston/rootston.ini.example $output/etc/rootston.ini
-    done
-    # Install ALL example programs to $examples:
-    # screencopy dmabuf-capture input-inhibitor layer-shell idle-inhibit idle
-    # screenshot output-layout multi-pointer rotation tablet touch pointer
-    # simple
-    mkdir -p $examples/bin
-    cd ./examples
-    for binary in $(find . -executable -type f -printf '%P\n' | grep -vE '\.so'); do
-      cp "$binary" "$examples/bin/wlroots-$binary"
-      patchelf \
-        --set-rpath "$(patchelf --print-rpath $output/bin/rootston | sed s,$out,$examples,g)" \
-        "$examples/bin/wlroots-$binary"
-    done
-  '';
 
   meta = with stdenv.lib; {
     description = "A modular Wayland compositor library";
