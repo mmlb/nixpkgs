@@ -4,11 +4,8 @@ buildGoModule rec {
   pname = "elvish";
   version = "0.13.1";
 
-  goPackagePath = "github.com/elves/elvish";
-  excludedPackages = [ "website" ];
   buildFlagsArray = ''
-    -ldflags=
-      -X ${goPackagePath}/buildinfo.Version=${version}
+    -ldflags=-X github.com/elves/elvish/buildinfo.Version=${version}
   '';
 
   src = fetchFromGitHub {
