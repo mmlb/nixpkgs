@@ -76,10 +76,6 @@ in buildRustPackage rec {
     ++ lib.optionals stdenv.isDarwin [ AppKit CoreGraphics CoreServices CoreText Foundation OpenGL ];
 
   outputs = [ "out" "terminfo" ];
-  postPatch = ''
-    substituteInPlace alacritty_terminal/src/config/mouse.rs \
-      --replace xdg-open ${xdg_utils}/bin/xdg-open
-  '';
 
   postBuild = lib.optionalString stdenv.isDarwin "make app";
 
