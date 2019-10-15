@@ -1,14 +1,11 @@
-{ stdenv, buildGoPackage, fetchFromGitHub }:
+{ stdenv, buildGoModule, fetchFromGitHub }:
 
-buildGoPackage rec {
+buildGoModule rec {
   pname = "elvish";
   version = "0.12";
 
-  goPackagePath = "github.com/elves/elvish";
-  excludedPackages = [ "website" ];
   buildFlagsArray = ''
-    -ldflags=
-      -X ${goPackagePath}/buildinfo.Version=${version}
+    -ldflags=-X github.com/elves/elvish/buildinfo.Version=${version}
   '';
 
   src = fetchFromGitHub {
@@ -17,6 +14,7 @@ buildGoPackage rec {
     rev = "v${version}";
     sha256 = "1vvbgkpnrnb5aaak4ks45wl0cyp0vbry8bpxl6v2dpmq9x0bscpp";
   };
+  modSha256 = "13x4wbfj8049ygm3zbgzyr2bm4sq4x6xddrxx6shr8fydlcf1g8v";
 
   meta = with stdenv.lib; {
     description = "A friendly and expressive command shell";
