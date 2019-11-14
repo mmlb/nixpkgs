@@ -13,7 +13,7 @@ libgit2.overrideAttrs (oldAttrs: {
   src = fetchFromGitHub {
     owner = "romkatv";
     repo = "libgit2";
-    rev = "83c3444bcbc76695874f630a93debf096ec07d2e";
-    sha256 = "1c66p163qzqzsqa85plsv3sfh2s2kdrciycr57z1lska9icdyzzl";
+    rev = "ec32e43fc9d5ba8d1f7774fa5cdef5da2b29061e";
+    sha256 = "127a6h25cgbb62v51yhiry4bspphaf3sk5l8pwpy72d3mb6ldcp9";
   };
 })
