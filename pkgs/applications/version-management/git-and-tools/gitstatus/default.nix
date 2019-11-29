@@ -6,7 +6,7 @@ stdenv.mkDerivation rec {
 
   src = fetchFromGitHub {
     owner = "romkatv";
-    repo = "gitstatus";
+    repo = pname;
     rev = "9c791f93c23c04dadfab8b4309a863b62a6ee424";
     sha256 = "0jbdrgl62x6j920h72n2q6304fb6gdgnmllpv4aa76m13b9qhgq6";
   };
