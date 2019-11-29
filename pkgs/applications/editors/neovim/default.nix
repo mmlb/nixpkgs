@@ -24,7 +24,7 @@ in
 
     src = fetchFromGitHub {
       owner = "neovim";
-      repo = "neovim";
+      repo = pname;
       rev = "36d1335a667d54c26ab7cca23bc60998cb8e0fb2";
       sha256 = "0akhk9cb0j50165ix8sa1ak7ps0y0s5cjvwc93448iqbdw764n7p";
     };

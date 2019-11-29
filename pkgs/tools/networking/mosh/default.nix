@@ -3,12 +3,12 @@
 , libutempter ? null, withUtempter ? stdenv.isLinux }:
 
 stdenv.mkDerivation rec {
-  name = "mosh-${version}";
+  pname = "mosh";
   version = "unstable-2019-10-03g${builtins.substring 0 9 src.rev}";
 
   src = fetchFromGitHub {
     owner = "mobile-shell";
-    repo = "mosh";
+    repo = pname;
     rev = "0cc492dbae2f6aaef9a54dc2a8ba3222868b150f";
     sha256 = "0w7jxdsyxgnf5h09rm8mfgm5z1qc1sqwvgzvrwzb04yshxpsg0zd";
   };
