@@ -15,15 +15,6 @@ stdenv.mkDerivation rec {
     sha256 = "1aggifmrb0i1mi4bsgwxvlacd887p70lw0vvjrr0vra64srncz94";
   };
 
-  patches = [
-    # add missing header that changed in mesa-19.2.2
-    # https://github.com/swaywm/wlroots/issues/1862
-    (fetchpatch {
-      url = "https://github.com/swaywm/wlroots/commit/d113e48a2a32542fe6e12f1759f07888364609bf.diff";
-      sha256 = "1h09j1gmnzlz4py92a92chgy8xzsd8h8xn5irq9s2hq4cla66h87";
-    })
-  ];
-
   # $out for the library and $examples for the example programs (in examples):
   outputs = [ "out" "examples" ];
 
