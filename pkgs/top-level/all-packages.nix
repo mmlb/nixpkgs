@@ -19118,7 +19118,7 @@ in
 
   welle-io = libsForQt5.callPackage ../applications/radio/welle-io { };
 
-  wireshark = callPackage ../applications/networking/sniffers/wireshark {
+  wireshark = libsForQt5.callPackage ../applications/networking/sniffers/wireshark {
     inherit (darwin.apple_sdk.frameworks) ApplicationServices SystemConfiguration;
   };
   wireshark-qt = wireshark;
