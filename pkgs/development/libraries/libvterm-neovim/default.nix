@@ -6,7 +6,7 @@
 
 stdenv.mkDerivation rec {
   pname = "libvterm-neovim";
-  version = "2019-10-08";
+  version = "2019-10-08g${builtins.substring 0 9 src.rev}";
 
   src = fetchFromGitHub {
     owner = "neovim";
