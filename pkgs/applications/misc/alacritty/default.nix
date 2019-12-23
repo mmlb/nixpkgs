@@ -52,12 +52,12 @@ let
   ];
 in buildRustPackage rec {
   pname = "alacritty";
-  version = "0.4.0";
+  version = "unstable-2019-11-25g${builtins.substring 0 9 src.rev}";
 
   src = fetchFromGitHub {
     owner = "jwilm";
     repo = pname;
-    rev = "v${version}";
+    rev = "b115b9038566d6ce0ed56f4a50c428c98e04b51a";
     sha256 = "0adaqdbma6gskb2g14yscrgr9gch5wf2g2clchplv72c2qr1k427";
   };
 
