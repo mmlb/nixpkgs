@@ -6,13 +6,13 @@
 
 stdenv.mkDerivation rec {
   pname = "wlroots";
-  version = "0.10.1";
+  version = "unstable-2019-10-07g${builtins.substring 0 9 src.rev}";
 
   src = fetchFromGitHub {
     owner = "swaywm";
     repo = "wlroots";
-    rev = version;
-    sha256 = "0j2lh9vc92zhn44rjbia5aw3y1rpgfng1x1h17lcvj5m4i6vj0pc";
+    rev = "b051bb68c23d8e552775494c86e5b5ad12bc7bf6";
+    sha256 = "1ak86kx617c81dy85wg9rldy1z3n8ch93cjc05a4j6sifv0nkyfm";
   };
 
   # $out for the library and $examples for the example programs (in examples):
@@ -51,7 +51,7 @@ stdenv.mkDerivation rec {
       compositor; or about 50,000 lines of code you were going to write anyway.
     '';
     inherit (src.meta) homepage;
-    changelog = "https://github.com/swaywm/wlroots/releases/tag/${version}";
+    changelog   = "https://github.com/swaywm/wlroots/releases/tag/${version}";
     license     = licenses.mit;
     platforms   = platforms.linux;
     maintainers = with maintainers; [ primeos ];
