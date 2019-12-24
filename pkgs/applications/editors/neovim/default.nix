@@ -19,7 +19,7 @@ let
     ));
 in
   stdenv.mkDerivation rec {
-    pname = "neovim-unwrapped";
+    pname = "neovim";
     version = "unstable-2019-11-25g${builtins.substring 0 9 src.rev}";
 
     src = fetchFromGitHub {
