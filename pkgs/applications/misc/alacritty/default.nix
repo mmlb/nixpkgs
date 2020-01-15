@@ -56,7 +56,7 @@ in buildRustPackage rec {
   version = "unstable-2020-01-09g${builtins.substring 0 9 src.rev}";
 
   src = fetchFromGitHub {
-    owner = "jwilm";
+    owner = "alacritty";
     repo = pname;
     rev = "c34ec12c309695e4c14d8e50b5f3f54198f70775";
     sha256 = "1g48rawf3jqf331jr1yrww66f0dkm1z9krgysq9qn7vd7jvzsc01";
@@ -114,7 +114,7 @@ in buildRustPackage rec {
 
   meta = with stdenv.lib; {
     description = "GPU-accelerated terminal emulator";
-    homepage = "https://github.com/jwilm/alacritty";
+    homepage = "https://github.com/alacritty/alacritty";
     license = licenses.asl20;
     maintainers = with maintainers; [ filalex77 mic92 ];
     platforms = platforms.unix;
