@@ -53,13 +53,13 @@ let
   ];
 in buildRustPackage rec {
   pname = "alacritty";
-  version = "unstable-2020-01-15g${builtins.substring 0 9 src.rev}";
+  version = "unstable-2020-01-17g${builtins.substring 0 9 src.rev}";
 
   src = fetchFromGitHub {
     owner = "alacritty";
     repo = pname;
-    rev = "f54aabfe9295902b6bbe0db115186ca26f1956b0";
-    sha256 = "0p0sb90g9a4ra7ks11j1iipgy6m06dhyifsfxh761zja58bxx9s7";
+    rev = "bd96e7f7694d9c6108baf0dc091eb6a68ad54041";
+    sha256 = "1rjz9975fz5rqaayvql2zf4r9mjnl0p7q8ls800hrgqszkzkv0zi";
   };
 
   cargoSha256 = "1bb9j59daig5g5psd6mykw77ixa9r1vn763ih4w6azjs3fg59vbn";
