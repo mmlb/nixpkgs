@@ -53,16 +53,16 @@ let
   ];
 in buildRustPackage rec {
   pname = "alacritty";
-  version = "unstable-2020-01-21g${builtins.substring 0 9 src.rev}";
+  version = "unstable-2020-01-26g${builtins.substring 0 9 src.rev}";
 
   src = fetchFromGitHub {
     owner = "alacritty";
     repo = pname;
-    rev = "767d59155a5d834d22ccb7c7d439b418ffad5404";
-    sha256 = "0b6vxy7x6g0r8hqcis6z5p8fl76zwzwivmwn7yipv9yk0fnyyawp";
+    rev = "6b327b6f8f0f308ff8f46cdf551ce0d0f3eda60b";
+    sha256 = "1jy5v38lj327qm4vp9vjddxscag8g3i8kawfa74gvwhffrw31bzx";
   };
 
-  cargoSha256 = "1bb9j59daig5g5psd6mykw77ixa9r1vn763ih4w6azjs3fg59vbn";
+  cargoSha256 = "1qhc49z73665fs60fqsv73ar68z99y8f0ha4k50cz01imypmbb3h";
 
   nativeBuildInputs = [
     cmake
