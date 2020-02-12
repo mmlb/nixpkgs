@@ -8,13 +8,13 @@
 
 stdenv.mkDerivation rec {
   pname = "sway";
-  version = "unstable-2020-02-10g${builtins.substring 0 9 src.rev}";
+  version = "unstable-2020-02-11g${builtins.substring 0 9 src.rev}";
 
   src = fetchFromGitHub {
     owner = "swaywm";
     repo = pname;
-    rev = "0f5157668da3cbf614a2f71ff24778ed62bad1ea";
-    sha256 = "1ic8l39mgcn27j23y5rwl1mw2jsrs539g9lns1v7pk3w3ypjpn7h";
+    rev = "47763c99f931daeb19fb6aba84bd60a22e9bd985";
+    sha256 = "1rr0jwr63k625ya4rcpjyl62m13fa0ngs1m5kv6sbl4cx9cxgqih";
   };
 
   patches = [
