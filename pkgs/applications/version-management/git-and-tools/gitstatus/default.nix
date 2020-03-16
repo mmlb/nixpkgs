@@ -2,13 +2,13 @@
 
 stdenv.mkDerivation rec {
   pname = "gitstatus";
-  version = "unstable-2020-02-27g${builtins.substring 0 9 src.rev}";
+  version = "unstable-2020-03-15g${builtins.substring 0 9 src.rev}";
 
   src = fetchFromGitHub {
     owner = "romkatv";
     repo = pname;
-    rev = "3d24f6966b4b0fa35e19b47f39794fd216f93796";
-    sha256 = "050p34v1bxxkmawhc3pdzqjlkyakmk3q5j6f9z8mrw9pjjwln7an";
+    rev = "69a666e4e46446dfbdb447b49a36f8d1f4589dc5";
+    sha256 = "1vknhn24bgq0ai32b045jyv2zcq8xik6wkl17nn9cwbs1crb2zky";
   };
 
   buildInputs = [ (callPackage ./romkatv_libgit2.nix {}) ];
