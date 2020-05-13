@@ -31,6 +31,8 @@ stdenv.mkDerivation rec {
     sed -i "/^project(/,/^)/ s/\\bversion: '\([0-9]\+\.[0-9]\+\.[0-9]\+\)'/version: '\1-${version}'/" meson.build
   '';
 
+  mesonFlags = [ "-Dlogind-provider=systemd" ];
+
   postInstall = ''
     # Copy the library to $examples
     mkdir -p $examples/lib
