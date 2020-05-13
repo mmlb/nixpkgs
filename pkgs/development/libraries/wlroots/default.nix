@@ -29,8 +29,8 @@ stdenv.mkDerivation rec {
   mesonFlags = [ "-Dlogind-provider=systemd" ];
 
   postPatch = ''
-    # It happens from time to time that the version wasn't updated:
-    sed -i "/^project(/,/^)/ s/\\bversion: '\([0-9]\.[0-9]\.[0-9]\)'/version: '\1-${version}'/" meson.build
+    # Add the revision to the version
+    sed -i "/^project(/,/^)/ s/\\bversion: '\([0-9]\+\.[0-9]\+\.[0-9]\+\)'/version: '\1-${version}'/" meson.build
   '';
 
   postInstall = ''
