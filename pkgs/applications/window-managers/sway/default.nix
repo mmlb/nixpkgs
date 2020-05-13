@@ -7,12 +7,12 @@
 
 stdenv.mkDerivation rec {
   pname = "sway";
-  version = "1.5";
+  version = "unstable-2020-0--15${builtins.substring 0 9 src.rev}";
 
   src = fetchFromGitHub {
     owner = "swaywm";
     repo = pname;
-    rev = version;
+    rev = "108b8e97b77acba6206cdc69e419531d17380c7a";
     sha256 = "0r3b7h778l9i20z3him9i2qsaynpn9y78hzfgv3cqi8fyry2c4f9";
   };
 
