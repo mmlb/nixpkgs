@@ -18,6 +18,8 @@ stdenv.mkDerivation rec {
   # $out for the library and $examples for the example programs (in examples):
   outputs = [ "out" "examples" ];
 
+  enableParallelBuilding = true;
+
   nativeBuildInputs = [ meson ninja pkg-config wayland ];
 
   buildInputs = [
