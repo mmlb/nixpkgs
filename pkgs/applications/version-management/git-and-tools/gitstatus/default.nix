@@ -16,7 +16,7 @@ stdenv.mkDerivation rec {
     sed -i "1i GITSTATUS_DAEMON=$out/bin/gitstatusd" gitstatus.plugin.zsh
   '';
   installPhase = ''
-    install -Dm755 gitstatusd $out/bin/gitstatusd
+    install -Dm755 usrbin/gitstatusd $out/bin/gitstatusd
     install -Dm444 gitstatus.plugin.zsh $out
   '';
 
