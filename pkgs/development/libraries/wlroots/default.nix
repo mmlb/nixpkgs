@@ -6,13 +6,13 @@
 
 stdenv.mkDerivation rec {
   pname = "wlroots";
-  version = "unstable-2020-07-15g${builtins.substring 0 9 src.rev}";
+  version = "unstable-2020-07-27g${builtins.substring 0 9 src.rev}";
 
   src = fetchFromGitHub {
     owner = "swaywm";
     repo = pname;
-    rev = "a145430afac6e1d0fbf65250b25573fdf1b2e4fd";
-    sha256 = "0cps48h98bivgnsqz68z11rh96lq0cn0a9138gam5bnx23wfdryx";
+    rev = "6d0ee53e1a3d270b8b783ffbc50b1da621ef7880";
+    sha256 = "1xp5gnhqwj7fldry8yx42ia7q3vmmknhm29g93xqpad57ffvl266";
   };
 
   # $out for the library and $examples for the example programs (in examples):
@@ -31,7 +31,7 @@ stdenv.mkDerivation rec {
   mesonFlags = [ "-Dlogind-provider=systemd" ];
 
   postPatch = ''
-    substituteInPlace meson.build --replace "0.11.0" "${version}"
+    substituteInPlace meson.build --replace "0.11.0" "0.11.0-${version}"
   '';
 
   postInstall = ''
