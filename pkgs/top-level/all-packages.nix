@@ -8921,7 +8921,7 @@ in
     buildPackages = buildPackages // { stdenv = gcc8Stdenv; };
   });
 
-  go = go_1_14;
+  go = go_1_15;
 
   go-repo-root = callPackage ../development/tools/go-repo-root { };
 
@@ -10542,8 +10542,8 @@ in
     if stdenv.targetPlatform.isi686
       then gcc6.cc
     else if stdenv.targetPlatform == stdenv.hostPlatform && targetPackages.stdenv.cc.isGNU
-	  # Can only do this is in the native case, otherwise we might get infinite
-	  # recursion if `targetPackages.stdenv.cc.cc` itself uses `gccForLibs`.
+          # Can only do this is in the native case, otherwise we might get infinite
+          # recursion if `targetPackages.stdenv.cc.cc` itself uses `gccForLibs`.
       then targetPackages.stdenv.cc.cc
     else gcc.cc;
 
