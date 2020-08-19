@@ -4,12 +4,12 @@ with stdenv.lib;
 
 stdenv.mkDerivation rec {
   pname = "kakoune-unwrapped";
-  version = "unstable-2020-08-04g${builtins.substring 0 9 src.rev}";
+  version = "unstable-2020-08-17g${builtins.substring 0 9 src.rev}";
   src = fetchFromGitHub {
     owner = "mawww";
     repo = "kakoune";
-    rev = "2c437cfa02ca568750182209ef6249c6975243a5";
-    sha256 = "1cgkis8bywy5k8k6j4i3prikpmhh1p6zyklliyxbc89mj64kvx4s";
+    rev = "4e4a65e9440cdf7164b7a73bdff50b6c641ac2f5";
+    sha256 = "0spawqn4iyq9yk5g8b1yx45fcczhjwpyga50b9kl9263c8p30wqr";
   };
   nativeBuildInputs = [ pkgconfig ];
   buildInputs = [ ncurses asciidoc docbook_xsl libxslt ];
