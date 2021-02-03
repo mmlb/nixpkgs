@@ -3,13 +3,13 @@
 
 stdenv.mkDerivation rec {
   pname = "zutty";
-  version = "unsable-20210123";
+  version = "unstable-2021-01-30g${builtins.substring 0 9 src.rev}";
 
   src = fetchFromGitHub rec {
     owner = "tomszilagyi";
     repo = "${pname}";
-    rev = "cd0c93e68528818324fb24908947e1399a716718";
-    sha256 = "1vhf12y7r6fmhg51hf14rw1hmd2sx0fln4c61ngz14rk6kmgpwxh";
+    rev = "f3fcf8e92b22e58b30947cf2585e361106dbcf9d";
+    sha256 = "1zvfaayx0v0w2gdd1qiz894x9f665k6y2yqhgfm7mj04vl3f3wzl";
   };
 
   nativeBuildInputs = [
