@@ -860,6 +860,8 @@ in
 
   yaft = callPackage ../applications/terminal-emulators/yaft { };
 
+  zutty = callPackage ../applications/terminal-emulators/zutty { };
+
   aldo = callPackage ../applications/radio/aldo { };
 
   almanah = callPackage ../applications/misc/almanah { };
