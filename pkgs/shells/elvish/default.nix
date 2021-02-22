@@ -2,7 +2,7 @@
 
 buildGoModule rec {
   pname = "elvish";
-  version = "unstable-2021-02-18g${builtins.substring 0 9 src.rev}";
+  version = "unstable-2021-02-21g${builtins.substring 0 9 src.rev}";
 
   excludedPackages = [ "website" ];
 
@@ -11,8 +11,8 @@ buildGoModule rec {
   src = fetchFromGitHub {
     owner = "elves";
     repo = pname;
-    rev = "53593c3ab79f7ddaddd60097aad55f601856a355";
-    sha256 = "1yw29n0xqwxr8jmw8wvdciypxsh4mbc2vq6zyn0gzpyqmlbsh8mr";
+    rev = "878590f2b078f5f28240ef7417d9ca5804557d0e";
+    sha256 = "0mgc5xs0qn2b7a70nxzphkadgxarc0lbxsw7qvc3mgz0imdg6f6b";
   };
 
   vendorSha256 = "1nn5sj04dkx457s5pjlhpnmxpgdy3zzq5l7vgjkynpmikfwvlvxp";
